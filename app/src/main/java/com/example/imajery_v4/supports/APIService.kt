@@ -6,8 +6,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface serviceAPI  {
-    @POST
+interface APIService {
+    @POST("/login")
     fun login(@Body loginReq: LoginReq): Call<LoginRes>
-
 }
