@@ -22,9 +22,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val sharedRef = getSharedPreferences("Data-IMAJERY", MODE_PRIVATE)
-        val refSplash = sharedRef.getInt("splash_status",0)
-        val refLogin = sharedRef.getInt("login_status",0)
-        val refTimeLogin = sharedRef.getLong("login_time",0)
 
         startActivity(Intent(this@MainActivity, auth_login::class.java))
 
