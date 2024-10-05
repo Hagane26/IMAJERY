@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.imajery_v4.databinding.FragmentDashboardBinding
@@ -22,6 +23,7 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        (activity as? AppCompatActivity)?.supportActionBar?.hide()
         val dashboardViewModel =
             ViewModelProvider(this).get(DashboardViewModel::class.java)
 
