@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_dashboard" />
+
+    <item
+        android:id="@+id/navigation_materi"
+        android:icon="@drawable/ic_materi_black_24dp"
+        android:title="@string/title_materi" />
+
+    <item
+        android:id="@+id/navigation_perkembangan"
+        android:icon="@drawable/ic_perkembangan_black_24dp"
+        android:title="@string/title_perkembangan" />
+
+</menu>

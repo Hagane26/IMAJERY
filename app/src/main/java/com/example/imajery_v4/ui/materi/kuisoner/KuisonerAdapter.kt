@@ -1,0 +1,67 @@
+package com.example.imajery_v4.ui.materi.kuisoner
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.TextView
+import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
+import com.example.imajery_v4.R
+import com.example.imajery_v4.models.Jawaban
+import com.example.imajery_v4.models.ListPertanyaan
+
+class KuisonerAdapter(
+    private val data : List<ListPertanyaan>
+) : RecyclerView.Adapter<KuisonerAdapter.ViewHolder>() {
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tv_pertanyaan : TextView = itemView.findViewById(R.id.tv_item_pertanyaan)
+        val rg_1 : RadioGroup = itemView.findViewById(R.id.rg_pertanyaan_1)
+
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.items_pertanyaan, parent, false)
+        return ViewHolder(view)
+    }
+
+    override fun getItemCount(): Int {
+        return data.size
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = data[position]
+        holder.tv_pertanyaan.text = item.pertanyaan
+        holder.rg_1.removeAllViews()
+
+        val opsi = DataOpsiPilihan.getOpsi(item.id)
+        val jawab : MutableList<Jawaban> = mutableListOf()
+        for (i in 0 until data.size) {
+            jawab.add(Jawaban(i,0))
+        }
+
+        opsi.forEachIndexed { index, x_opsi ->
+            val rb = RadioButton(holder.itemView.context)
+            rb.text = x_opsi
+            rb.id = index
+            holder.rg_1.addView(rb)
+
+            rb.setOnClickListener {
+
+                for (i in 0 until holder.rg_1.childCount) {
+                    val child = holder.rg_1.getChildAt(i) as RadioButton
+                    if(child != null && child.id == index){
+                        child.isChecked = true
+                        jawab.add(position, Jawaban(position,index))
+                        Toast.makeText(holder.itemView.context, jawab.toString(), Toast.LENGTH_LONG).show()
+                    }else{
+                        child.isChecked = false
+                    }
+                }
+            }
+        }
+    }
+
+}

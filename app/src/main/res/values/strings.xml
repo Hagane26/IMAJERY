@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">IMAJERY-V4</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_auth_login">auth_login</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="imajery_login_label">Silahkan Login ke IMAJERY</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_login_text">Login</string>
+    <string name="login_pass_hint">Password</string>
+    <string name="Password">Password</string>
+    <string name="Email">Email</string>
+    <string name="title_materi">Materi</string>
+    <string name="title_perkembangan">Perkembangan</string>
+    <string name="default_materi_judul">Judul Materi</string>
+    <string name="default_materi_deskripsi">Deskripsi Materi</string>
+    <string name="default_username">Username</string>
+    <string name="lakukan_pretest">Lakukan Pretest</string>
+    <string name="btn_submit_text">Kirim Jawaban</string>
+</resources>
