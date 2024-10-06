@@ -5,20 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imajery_v4.R
 import com.example.imajery_v4.models.ListMateri
 import com.example.imajery_v4.ui.materi.detail.Materi_Detail
 import com.google.android.material.card.MaterialCardView
 
+
 class MateriAdapter(
     private val data : List<ListMateri>,
 ) : RecyclerView.Adapter<MateriAdapter.ViewHolder>() {
 
     class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val card = itemView.findViewById<MaterialCardView>(R.id.card_item_materi)
-        val tv_judul = itemView.findViewById<TextView>(R.id.tv_item_judul)
-        val tv_desc = itemView.findViewById<TextView>(R.id.tv_item_desc)
+        val card : MaterialCardView = itemView.findViewById(R.id.card_item_materi)
+        val tv_judul : TextView = itemView.findViewById(R.id.tv_item_judul)
+        val tv_desc : TextView = itemView.findViewById(R.id.tv_item_desc)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
