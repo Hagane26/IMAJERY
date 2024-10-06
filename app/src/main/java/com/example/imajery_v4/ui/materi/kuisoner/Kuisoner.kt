@@ -1,6 +1,7 @@
 package com.example.imajery_v4.ui.materi.kuisoner
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imajery_v4.R
+import com.example.imajery_v4.models.Jawaban
 import com.example.imajery_v4.models.ListPertanyaan
 import com.example.imajery_v4.models.ListPertanyaanPost
 import com.example.imajery_v4.supports.APIService
@@ -21,6 +23,7 @@ class Kuisoner : AppCompatActivity() {
 
     private lateinit var rv : RecyclerView
     private lateinit var adapter : KuisonerAdapter
+    private var jawabanList: List<Jawaban> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +38,9 @@ class Kuisoner : AppCompatActivity() {
 
         val apis = retrofitClient.instance.create(APIService::class.java)
         val m_id = intent.getIntExtra("m_id",0)
-        val postid = ListPertanyaanPost(1)
+        val postid = ListPertanyaanPost(m_id)
+
+        val btn_kirim : Button = findViewById(R.id.btn_kuisoner_kirim)
 
         rv = findViewById(R.id.rv_pertanyaan)
         rv.layoutManager = LinearLayoutManager(this)
@@ -46,8 +51,10 @@ class Kuisoner : AppCompatActivity() {
                 response: Response<List<ListPertanyaan>>
             ) {
                 if (response.isSuccessful) {
-                    response.body()?.let {
-                        adapter = KuisonerAdapter(it)
+                    response.body()?.let { pertanyaanList ->
+                        adapter = KuisonerAdapter(pertanyaanList){ jawaban ->
+                            jawabanList = jawaban   // --> identifikasi jawaban
+                        }
                         rv.adapter = adapter
                     }
                 }else{
@@ -61,5 +68,8 @@ class Kuisoner : AppCompatActivity() {
 
         })
 
+        btn_kirim.setOnClickListener {
+
+        }
     }
 }

@@ -13,13 +13,15 @@ import com.example.imajery_v4.models.Jawaban
 import com.example.imajery_v4.models.ListPertanyaan
 
 class KuisonerAdapter(
-    private val data : List<ListPertanyaan>
+    private val data : List<ListPertanyaan>,
+    private val onAnswer : (List<Jawaban>) -> Unit // --> Callback saat jawaban dipilih
 ) : RecyclerView.Adapter<KuisonerAdapter.ViewHolder>() {
+
+    private val jawab: MutableList<Jawaban> = mutableListOf()
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tv_pertanyaan : TextView = itemView.findViewById(R.id.tv_item_pertanyaan)
         val rg_1 : RadioGroup = itemView.findViewById(R.id.rg_pertanyaan_1)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,11 +38,11 @@ class KuisonerAdapter(
         holder.tv_pertanyaan.text = item.pertanyaan
         holder.rg_1.removeAllViews()
 
-        val opsi = DataOpsiPilihan.getOpsi(item.id)
-        val jawab : MutableList<Jawaban> = mutableListOf()
-        for (i in 0 until data.size) {
-            jawab.add(Jawaban(i,0))
+        if(jawab.size < data.size){
+            jawab.addAll(List(data.size - jawab.size){Jawaban(it,0)})
         }
+
+        val opsi = DataOpsiPilihan.getOpsi(item.id)
 
         opsi.forEachIndexed { index, x_opsi ->
             val rb = RadioButton(holder.itemView.context)
@@ -54,14 +56,17 @@ class KuisonerAdapter(
                     val child = holder.rg_1.getChildAt(i) as RadioButton
                     if(child != null && child.id == index){
                         child.isChecked = true
-                        jawab.add(position, Jawaban(position,index))
-                        Toast.makeText(holder.itemView.context, jawab.toString(), Toast.LENGTH_LONG).show()
                     }else{
                         child.isChecked = false
                     }
                 }
+
+                jawab[position] = Jawaban(position,index)
+                //Toast.makeText(holder.itemView.context, "jawaban : ${jawab[position].value}", Toast.LENGTH_SHORT).show()
+                onAnswer(jawab) // --> Callback saat jawaban dipilih
             }
         }
     }
+
 
 }
