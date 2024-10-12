@@ -52,7 +52,7 @@ class Kuisoner : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     response.body()?.let { pertanyaanList ->
-                        adapter = KuisonerAdapter(pertanyaanList){ jawaban ->
+                        adapter = KuisonerAdapter(pertanyaanList,m_id){ jawaban ->
                             jawabanList = jawaban   // --> identifikasi jawaban
                         }
                         rv.adapter = adapter
@@ -69,7 +69,12 @@ class Kuisoner : AppCompatActivity() {
         })
 
         btn_kirim.setOnClickListener {
+            if(jawabanList.isNotEmpty()){
 
+                Toast.makeText(this, jawabanList.toString(), Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this, "Belum ada jawaban yang dipilih.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

@@ -16,9 +16,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_pertanyaan"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="-1dp"
+            android:layout_height="600dp"
             android:layout_marginBottom="10dp"
+            tools:layout_editor_absoluteX="-1dp"
             tools:listitem="@layout/items_pertanyaan" />
 
         <Button

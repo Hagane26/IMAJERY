@@ -1,5 +1,6 @@
 package com.example.imajery_v4.ui.materi.kuisoner
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,13 +8,16 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imajery_v4.R
 import com.example.imajery_v4.models.Jawaban
 import com.example.imajery_v4.models.ListPertanyaan
+import com.example.imajery_v4.models.ListPertanyaanPost
 
 class KuisonerAdapter(
     private val data : List<ListPertanyaan>,
+    private val mid : Int,
     private val onAnswer : (List<Jawaban>) -> Unit // --> Callback saat jawaban dipilih
 ) : RecyclerView.Adapter<KuisonerAdapter.ViewHolder>() {
 
@@ -39,7 +43,7 @@ class KuisonerAdapter(
         holder.rg_1.removeAllViews()
 
         if(jawab.size < data.size){
-            jawab.addAll(List(data.size - jawab.size){Jawaban(it,0)})
+            jawab.addAll(List(data.size - jawab.size){Jawaban(it,0,0)})
         }
 
         val opsi = DataOpsiPilihan.getOpsi(item.id)
@@ -61,7 +65,7 @@ class KuisonerAdapter(
                     }
                 }
 
-                jawab[position] = Jawaban(position,index)
+                jawab[position] = Jawaban(mid,position,index)
                 //Toast.makeText(holder.itemView.context, "jawaban : ${jawab[position].value}", Toast.LENGTH_SHORT).show()
                 onAnswer(jawab) // --> Callback saat jawaban dipilih
             }

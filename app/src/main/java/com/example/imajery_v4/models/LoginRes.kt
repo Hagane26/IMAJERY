@@ -1,6 +1,8 @@
 package com.example.imajery_v4.models
 
 data class LoginRes(
-    val State: String,
-    val Message: String,
+    val status: String,
+    val message: String,
+    val id_user: String,
+    val username: String,
 )

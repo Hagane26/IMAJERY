@@ -1,6 +1,7 @@
 package com.example.imajery_v4.models
 
 data class Jawaban(
-    val id : Int,
+    val idk : Int,
+    val idp : Int,
     val value : Int
 )
