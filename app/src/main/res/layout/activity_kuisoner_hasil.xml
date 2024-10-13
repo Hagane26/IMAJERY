@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.materi.kuisoner.KuisonerHasil"
+    android:orientation="vertical"
+    android:gravity="top">
+
+    <Button
+        android:id="@+id/btn_kuisoner_hasil_kembali"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:text="Kembali"
+        android:layout_marginStart="10dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_kuisoner_hasil_value"
+        android:layout_width="match_parent"
+        android:layout_height="80sp"
+        android:text="0"
+        android:textSize="75sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:id="@+id/tv_kuisoner_hasil_kat"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Sangat Rendah"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_kuisoner_hasil_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/items_jawaban"/>
+
+</LinearLayout>

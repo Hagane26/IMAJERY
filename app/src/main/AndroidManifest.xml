@@ -16,20 +16,29 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.materi.kuisoner.KuisonerHasil"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.auth_register"
+            android:exported="false" />
+        <activity
+            android:name=".ui.materi.MediaAudio.AudioPlay"
+            android:exported="false" />
+        <activity
             android:name=".ui.materi.kuisoner.Kuisoner"
             android:exported="false" />
         <activity
             android:name=".ui.materi.detail.Materi_Detail"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".ui.users.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".ui.auth.auth_login"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -2,6 +2,7 @@ package com.example.imajery_v4.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -44,7 +45,7 @@ class auth_login : AppCompatActivity() {
 
         btn_login.setOnClickListener{
             val loginReq = LoginReq(
-                email = tb_email.text.toString(),
+                username = tb_email.text.toString(),
                 password = tb_password.text.toString()
             )
 
@@ -52,11 +53,14 @@ class auth_login : AppCompatActivity() {
                 override fun onResponse(call: Call<LoginRes>, response: Response<LoginRes>) {
                     if(response.isSuccessful){
                         response.body()?.let {
-                            if(it.State == "1"){
+                            Log.d("respon: ",it.toString())
+                            if(it.status == "1"){
 
                                 srEdit.putInt("login_status",1)
                                 srEdit.putInt("splash_status",1)
                                 srEdit.putLong("login_time",currentTime)
+                                srEdit.putInt("userID",it.id_user)
+                                srEdit.putString("username",it.username)
                                 srEdit.apply()
                                 startActivity(
                                     Intent(
@@ -67,14 +71,14 @@ class auth_login : AppCompatActivity() {
 
                                 Toast.makeText(this@auth_login,"Login Berhasil", Toast.LENGTH_LONG).show()
                             }else{
-                                Toast.makeText(this@auth_login,"Login Gagal", Toast.LENGTH_LONG).show()
+                                Toast.makeText(this@auth_login,"Login Gagal \n ${ it.status + ":" + it.message} \n ${tb_email.text.toString()}", Toast.LENGTH_LONG).show()
                             }
                         }
                     }
                 }
 
                 override fun onFailure(call: Call<LoginRes>, t: Throwable) {
-                    Toast.makeText(this@auth_login,"Login Gagal : \n" + t.message.toString() , Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@auth_login,"Login Gagal 2: \n" + t.message.toString() , Toast.LENGTH_LONG).show()
                 }
 
             })

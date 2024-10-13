@@ -24,6 +24,7 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:layout_margin="10dp"
                 android:src="@drawable/ic_materi_black_24dp"/>
 
             <LinearLayout
@@ -40,8 +41,8 @@
                 <TextView
                     android:id="@+id/tv_detail_desc"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:text="@string/default_materi_deskripsi"/>
+                    android:layout_height="match_parent"
+                    android:text="@string/default_materi_deskripsi" />
 
             </LinearLayout>
         </LinearLayout>
@@ -52,6 +53,7 @@
         android:id="@+id/btn_pretest"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_margin="15dp"
         android:text="@string/lakukan_pretest"
         app:layout_constraintTop_toBottomOf="@id/card_detail_1"
         />

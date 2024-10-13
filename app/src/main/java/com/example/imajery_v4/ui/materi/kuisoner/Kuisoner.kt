@@ -1,6 +1,8 @@
 package com.example.imajery_v4.ui.materi.kuisoner
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +11,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imajery_v4.R
+import com.example.imajery_v4.models.Jawaban
+import com.example.imajery_v4.models.JawabanReq
+import com.example.imajery_v4.models.JawabanRes
 import com.example.imajery_v4.models.ListPertanyaan
 import com.example.imajery_v4.models.ListPertanyaanPost
 import com.example.imajery_v4.supports.APIService
@@ -21,6 +26,7 @@ class Kuisoner : AppCompatActivity() {
 
     private lateinit var rv : RecyclerView
     private lateinit var adapter : KuisonerAdapter
+    private var jawabanList: List<Jawaban> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +40,12 @@ class Kuisoner : AppCompatActivity() {
         }
 
         val apis = retrofitClient.instance.create(APIService::class.java)
-        val m_id = intent.getIntExtra("m_id",0)
-        val postid = ListPertanyaanPost(1)
+        val mID = intent.getIntExtra("mID",0)
+        val kID = intent.getIntExtra("kID",0)
+        val uID = intent.getIntExtra("uID",0)
+        val postid = ListPertanyaanPost(mID)
+
+        val btn_kirim : Button = findViewById(R.id.btn_kuisoner_kirim)
 
         rv = findViewById(R.id.rv_pertanyaan)
         rv.layoutManager = LinearLayoutManager(this)
@@ -46,8 +56,10 @@ class Kuisoner : AppCompatActivity() {
                 response: Response<List<ListPertanyaan>>
             ) {
                 if (response.isSuccessful) {
-                    response.body()?.let {
-                        adapter = KuisonerAdapter(it)
+                    response.body()?.let { pertanyaanList ->
+                        adapter = KuisonerAdapter(pertanyaanList,kID){ jawaban ->
+                            jawabanList = jawaban   // --> identifikasi jawaban
+                        }
                         rv.adapter = adapter
                     }
                 }else{
@@ -60,6 +72,51 @@ class Kuisoner : AppCompatActivity() {
             }
 
         })
+
+        btn_kirim.setOnClickListener {
+            if(jawabanList.isNotEmpty()){
+
+                val data = JawabanReq(
+                    mid = mID,
+                    DataJawaban = jawabanList
+                )
+
+                apis.kirimJawaban(data).enqueue(object : Callback<JawabanRes> {
+                    override fun onResponse(
+                        call: Call<JawabanRes>,
+                        response: Response<JawabanRes>
+                    ) {
+                        if(response.isSuccessful){
+                            response.body()?.let {
+                                if(it.status == "1"){
+                                    val intent = Intent(this@Kuisoner,KuisonerHasil::class.java).apply {
+                                        putExtra("kID", kID)
+                                    }
+                                    startActivity(intent)
+                                    //startActivity(Intent(this@Kuisoner,KuisonerHasil::class.java))
+                                    Toast.makeText(this@Kuisoner,"Jawaban berhasil dikirim \n ${it.status + " : " + it.message}", Toast.LENGTH_LONG).show()
+                                }else{
+                                    Toast.makeText(this@Kuisoner,"Gagal Mengirim Jawaban", Toast.LENGTH_LONG).show()
+                                }
+                            }
+                        }else{
+                            Toast.makeText(this@Kuisoner,"Gagal Mengirim Jawaban 2", Toast.LENGTH_LONG).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<JawabanRes>, t: Throwable) {
+                        Toast.makeText(this@Kuisoner,"Error :\n ${t.message.toString()}", Toast.LENGTH_LONG).show()
+                    }
+
+                })
+                //Toast.makeText(this, jawabanList.toString(), Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this, "Belum ada jawaban yang dipilih.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun back(){
 
     }
 }
