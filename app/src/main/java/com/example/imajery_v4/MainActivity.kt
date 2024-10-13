@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         val currentTime = ZonedDateTime.now().toInstant().toEpochMilli()
         val timeLogin = TimeUnit.MILLISECONDS.toDays(currentTime - refTimeLogin)
 
-        Toast.makeText(this@MainActivity, "Login Time : $timeLogin", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this@MainActivity, "Login Time : $timeLogin", Toast.LENGTH_SHORT).show()
 
         if(refSplash == 0 || refLogin == 0 || timeLogin >= 1 || refUserID == 0){
             startActivity(Intent(this@MainActivity,SplashActivity::class.java))

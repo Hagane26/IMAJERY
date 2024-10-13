@@ -10,6 +10,9 @@ import com.example.imajery_v4.models.ListPertanyaan
 import com.example.imajery_v4.models.ListPertanyaanPost
 import com.example.imajery_v4.models.LoginReq
 import com.example.imajery_v4.models.LoginRes
+import com.example.imajery_v4.models.KuisonerHasilReq
+import com.example.imajery_v4.models.KuisonerHasilRes
+import com.example.imajery_v4.models.KuisonerPenilaian
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -31,5 +34,11 @@ interface APIService {
 
     @POST("/kirim_jawaban")
     fun kirimJawaban(@Body jawaban: JawabanReq): Call<JawabanRes>
+
+    @POST("/kuisoner_hasil")
+    fun kuisonerHasil(@Body id: KuisonerHasilReq): Call<List<KuisonerHasilRes>>
+
+    @POST("/penilaian_hasil")
+    fun kuisonerPenilaian(@Body id: KuisonerHasilReq): Call<KuisonerPenilaian>
 
 }

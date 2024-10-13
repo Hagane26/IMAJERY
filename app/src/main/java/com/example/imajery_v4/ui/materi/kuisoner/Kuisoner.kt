@@ -1,5 +1,6 @@
 package com.example.imajery_v4.ui.materi.kuisoner
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -56,7 +57,7 @@ class Kuisoner : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     response.body()?.let { pertanyaanList ->
-                        adapter = KuisonerAdapter(pertanyaanList,mID){ jawaban ->
+                        adapter = KuisonerAdapter(pertanyaanList,kID){ jawaban ->
                             jawabanList = jawaban   // --> identifikasi jawaban
                         }
                         rv.adapter = adapter
@@ -88,6 +89,11 @@ class Kuisoner : AppCompatActivity() {
                         if(response.isSuccessful){
                             response.body()?.let {
                                 if(it.status == "1"){
+                                    val intent = Intent(this@Kuisoner,KuisonerHasil::class.java).apply {
+                                        putExtra("kID", kID)
+                                    }
+                                    startActivity(intent)
+                                    //startActivity(Intent(this@Kuisoner,KuisonerHasil::class.java))
                                     Toast.makeText(this@Kuisoner,"Jawaban berhasil dikirim \n ${it.status + " : " + it.message}", Toast.LENGTH_LONG).show()
                                 }else{
                                     Toast.makeText(this@Kuisoner,"Gagal Mengirim Jawaban", Toast.LENGTH_LONG).show()

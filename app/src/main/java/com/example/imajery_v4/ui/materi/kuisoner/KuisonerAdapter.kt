@@ -17,7 +17,7 @@ import com.example.imajery_v4.models.ListPertanyaanPost
 
 class KuisonerAdapter(
     private val data : List<ListPertanyaan>,
-    private val mid : Int,
+    private val kid : Int,
     private val onAnswer : (List<Jawaban>) -> Unit // --> Callback saat jawaban dipilih
 ) : RecyclerView.Adapter<KuisonerAdapter.ViewHolder>() {
 
@@ -65,7 +65,7 @@ class KuisonerAdapter(
                     }
                 }
 
-                jawab[position] = Jawaban(mid,item.id,(index+1))
+                jawab[position] = Jawaban(kid,item.id,(index+1))
                 //Toast.makeText(holder.itemView.context, "jawaban : ${jawab[position].value}", Toast.LENGTH_SHORT).show()
                 onAnswer(jawab) // --> Callback saat jawaban dipilih
             }
