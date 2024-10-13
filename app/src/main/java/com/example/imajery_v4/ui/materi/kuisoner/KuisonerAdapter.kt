@@ -66,7 +66,7 @@ class KuisonerAdapter(
                 }
 
                 jawab[position] = Jawaban(mid,position,index)
-                //Toast.makeText(holder.itemView.context, "jawaban : ${jawab[position].value}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(holder.itemView.context, "jawaban : ${jawab[position].value}", Toast.LENGTH_SHORT).show()
                 onAnswer(jawab) // --> Callback saat jawaban dipilih
             }
         }

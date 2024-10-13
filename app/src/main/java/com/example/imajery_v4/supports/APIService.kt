@@ -1,7 +1,10 @@
 package com.example.imajery_v4.supports
 
 import com.example.imajery_v4.models.Jawaban
+import com.example.imajery_v4.models.JawabanReq
 import com.example.imajery_v4.models.JawabanRes
+import com.example.imajery_v4.models.KuisonerReq
+import com.example.imajery_v4.models.KuisonerRes
 import com.example.imajery_v4.models.ListMateri
 import com.example.imajery_v4.models.ListPertanyaan
 import com.example.imajery_v4.models.ListPertanyaanPost
@@ -23,7 +26,10 @@ interface APIService {
     @POST("/kuisoner")
     fun getPertanyaan(@Body id: ListPertanyaanPost): Call<List<ListPertanyaan>>
 
+    @POST("/kuisoner_buat")
+    fun buatKuisoner(@Body kuisoner: KuisonerReq): Call<KuisonerRes>
+
     @POST("/kirim_jawaban")
-    fun kirimJawaban(@Body jawaban: List<Jawaban>): Call<List<JawabanRes>>
+    fun kirimJawaban(@Body jawaban: JawabanReq): Call<JawabanRes>
 
 }

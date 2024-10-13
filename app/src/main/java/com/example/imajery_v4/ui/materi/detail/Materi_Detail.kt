@@ -1,15 +1,23 @@
 package com.example.imajery_v4.ui.materi.detail
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.imajery_v4.R
+import com.example.imajery_v4.models.KuisonerReq
+import com.example.imajery_v4.models.KuisonerRes
+import com.example.imajery_v4.supports.APIService
+import com.example.imajery_v4.supports.retrofitClient
 import com.example.imajery_v4.ui.materi.kuisoner.Kuisoner
+import retrofit2.Call
+import retrofit2.Response
 
 class Materi_Detail : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +29,10 @@ class Materi_Detail : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val sharedRef = getSharedPreferences("Data-IMAJERY", MODE_PRIVATE)
+        val refUserID = sharedRef.getInt("userID",0)
+
+        val apis = retrofitClient.instance.create(APIService::class.java)
         val m_id = intent.getIntExtra("m_id",0)
         val judul = intent.getStringExtra("judul")
         val desc = intent.getStringExtra("desc")
@@ -33,11 +45,42 @@ class Materi_Detail : AppCompatActivity() {
         tv_detail_desc.text = desc
 
         btn_pretest.setOnClickListener {
-            val intent = Intent(this, Kuisoner::class.java).apply {
-                putExtra("m_id", m_id)
-            }
-            startActivity(intent)
+
+            val data = KuisonerReq(
+                id_user = refUserID,
+                id_materi = m_id
+            )
+            apis.buatKuisoner(data).enqueue(object : retrofit2.Callback<KuisonerRes> {
+                override fun onResponse(call: Call<KuisonerRes>, response: Response<KuisonerRes>) {
+                    if(response.isSuccessful){
+                        response.body()?.let {
+                            if(it.status == "1"){
+                                gas(m_id,it.id_kuisoner, refUserID, this@Materi_Detail)
+                            }else{
+                                Toast.makeText(this@Materi_Detail,"Anda Tidak Bisa Menuju ke Kuisoner!", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }else{
+                        Toast.makeText(this@Materi_Detail,"No Response \n ${response.message()}", Toast.LENGTH_LONG).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<KuisonerRes>, t: Throwable) {
+                    Toast.makeText(this@Materi_Detail,"Error :\n ${t.message.toString()}", Toast.LENGTH_LONG).show()
+                }
+
+            })
+
         }
+    }
+
+    private fun gas(mID : Int, kID :Int, uID : Int,ctx : Context){
+        val intent = Intent(ctx, Kuisoner::class.java).apply {
+            putExtra("mID", mID)
+            putExtra("kID", kID)
+            putExtra("uID", uID)
+        }
+        startActivity(intent)
     }
 
 }

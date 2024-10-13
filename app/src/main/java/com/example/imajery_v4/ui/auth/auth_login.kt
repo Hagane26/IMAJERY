@@ -59,6 +59,8 @@ class auth_login : AppCompatActivity() {
                                 srEdit.putInt("login_status",1)
                                 srEdit.putInt("splash_status",1)
                                 srEdit.putLong("login_time",currentTime)
+                                srEdit.putInt("userID",it.id_user)
+                                srEdit.putString("username",it.username)
                                 srEdit.apply()
                                 startActivity(
                                     Intent(

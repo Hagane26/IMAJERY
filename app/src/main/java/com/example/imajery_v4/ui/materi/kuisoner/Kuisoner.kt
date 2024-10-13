@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imajery_v4.R
 import com.example.imajery_v4.models.Jawaban
+import com.example.imajery_v4.models.JawabanReq
+import com.example.imajery_v4.models.JawabanRes
 import com.example.imajery_v4.models.ListPertanyaan
 import com.example.imajery_v4.models.ListPertanyaanPost
 import com.example.imajery_v4.supports.APIService
@@ -37,8 +39,10 @@ class Kuisoner : AppCompatActivity() {
         }
 
         val apis = retrofitClient.instance.create(APIService::class.java)
-        val m_id = intent.getIntExtra("m_id",0)
-        val postid = ListPertanyaanPost(m_id)
+        val mID = intent.getIntExtra("mID",0)
+        val kID = intent.getIntExtra("kID",0)
+        val uID = intent.getIntExtra("uID",0)
+        val postid = ListPertanyaanPost(mID)
 
         val btn_kirim : Button = findViewById(R.id.btn_kuisoner_kirim)
 
@@ -52,7 +56,7 @@ class Kuisoner : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     response.body()?.let { pertanyaanList ->
-                        adapter = KuisonerAdapter(pertanyaanList,m_id){ jawaban ->
+                        adapter = KuisonerAdapter(pertanyaanList,mID){ jawaban ->
                             jawabanList = jawaban   // --> identifikasi jawaban
                         }
                         rv.adapter = adapter
@@ -71,10 +75,45 @@ class Kuisoner : AppCompatActivity() {
         btn_kirim.setOnClickListener {
             if(jawabanList.isNotEmpty()){
 
-                Toast.makeText(this, jawabanList.toString(), Toast.LENGTH_SHORT).show()
+                val jawab = jawabanList.joinToString(separator = ","){jawaban ->
+                    "{'id_kuisoner': ${kID}, 'id_pertanyaan': ${jawaban.idp}, 'value': ${jawaban.value}}"
+                }
+
+                val data = JawabanReq(
+                    DataJawaban = jawab
+                )
+
+                apis.kirimJawaban(data).enqueue(object : Callback<JawabanRes> {
+                    override fun onResponse(
+                        call: Call<JawabanRes>,
+                        response: Response<JawabanRes>
+                    ) {
+                        if(response.isSuccessful){
+                            response.body()?.let {
+                                if(it.status == "1"){
+                                    Toast.makeText(this@Kuisoner,"Jawaban berhasil dikirim \n ${it.status + " : " + it.message}", Toast.LENGTH_LONG).show()
+                                }else{
+                                    Toast.makeText(this@Kuisoner,"Gagal Mengirim Jawaban", Toast.LENGTH_LONG).show()
+                                }
+                            }
+                        }else{
+                            Toast.makeText(this@Kuisoner,"Gagal Mengirim Jawaban 2", Toast.LENGTH_LONG).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<JawabanRes>, t: Throwable) {
+                        Toast.makeText(this@Kuisoner,"Error :\n ${t.message.toString()}", Toast.LENGTH_LONG).show()
+                    }
+
+                })
+                //Toast.makeText(this, jawabanList.toString(), Toast.LENGTH_SHORT).show()
             }else{
                 Toast.makeText(this, "Belum ada jawaban yang dipilih.", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun back(){
+
     }
 }

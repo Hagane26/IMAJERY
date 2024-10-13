@@ -1,8 +1,7 @@
 package com.example.imajery_v4.models
 
-data class LoginRes(
+data class KuisonerRes(
     val status: String,
     val message: String,
-    val id_user: Int,
-    val username: String,
+    val id_kuisoner: Int,
 )
