@@ -1,5 +1,7 @@
 package com.example.imajery_v4.supports
 
+import com.example.imajery_v4.models.AudioReq
+import com.example.imajery_v4.models.AudioRes
 import com.example.imajery_v4.models.Jawaban
 import com.example.imajery_v4.models.JawabanReq
 import com.example.imajery_v4.models.JawabanRes
@@ -41,4 +43,6 @@ interface APIService {
     @POST("/penilaian_hasil")
     fun kuisonerPenilaian(@Body id: KuisonerHasilReq): Call<KuisonerPenilaian>
 
+    @POST("/audio")
+    fun getAudio(@Body id: AudioReq): Call<List<AudioRes>>
 }

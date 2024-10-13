@@ -58,4 +58,14 @@
         app:layout_constraintTop_toBottomOf="@id/card_detail_1"
         />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_materi_audio"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_pretest"
+        app:layout_constraintVertical_bias="0.188"
+        tools:layout_editor_absoluteX="-4dp"
+        tools:listitem="@layout/items_materi_audio" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
