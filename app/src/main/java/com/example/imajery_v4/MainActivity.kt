@@ -28,13 +28,14 @@ class MainActivity : AppCompatActivity() {
         val refSplash = sharedRef.getInt("splash_status",0)
         val refLogin = sharedRef.getInt("login_status",0)
         val refTimeLogin = sharedRef.getLong("login_time",0)
+        val refUserID = sharedRef.getInt("userID",0)
 
         val currentTime = ZonedDateTime.now().toInstant().toEpochMilli()
         val timeLogin = TimeUnit.MILLISECONDS.toDays(currentTime - refTimeLogin)
 
         Toast.makeText(this@MainActivity, "Login Time : $timeLogin", Toast.LENGTH_SHORT).show()
 
-        if(refSplash == 0 || refLogin == 0 || timeLogin >= 1){
+        if(refSplash == 0 || refLogin == 0 || timeLogin >= 1 || refUserID == 0){
             startActivity(Intent(this@MainActivity,SplashActivity::class.java))
         }
 
