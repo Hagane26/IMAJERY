@@ -75,12 +75,9 @@ class Kuisoner : AppCompatActivity() {
         btn_kirim.setOnClickListener {
             if(jawabanList.isNotEmpty()){
 
-                val jawab = jawabanList.joinToString(separator = ","){jawaban ->
-                    "{'id_kuisoner': ${kID}, 'id_pertanyaan': ${jawaban.idp}, 'value': ${jawaban.value}}"
-                }
-
                 val data = JawabanReq(
-                    DataJawaban = jawab
+                    mid = mID,
+                    DataJawaban = jawabanList
                 )
 
                 apis.kirimJawaban(data).enqueue(object : Callback<JawabanRes> {
