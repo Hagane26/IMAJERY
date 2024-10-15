@@ -42,6 +42,7 @@ class auth_login : AppCompatActivity() {
         val tb_email : EditText = findViewById(R.id.et_login_email)
         val tb_password : EditText = findViewById(R.id.et_login_password)
         val btn_login : Button = findViewById(R.id.btn_login_submit)
+        val btn_register : Button = findViewById(R.id.btn_login_register)
 
         btn_login.setOnClickListener{
             val loginReq = LoginReq(
@@ -84,5 +85,8 @@ class auth_login : AppCompatActivity() {
             })
         }
 
+        btn_register.setOnClickListener{
+            startActivity(Intent(this@auth_login,auth_register::class.java))
+        }
     }
 }
