@@ -50,7 +50,7 @@ class AudioPlay : AppCompatActivity() {
 
         tv_audio_judul.text = judul
 
-        mediaplayer.setAudioStreamType(AudioManager.MODE_NORMAL)
+        mediaplayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
 
         try {
             mediaplayer.setDataSource(url)
