@@ -57,6 +57,7 @@ class KuisonerHasil : AppCompatActivity() {
                     response.body()?.let {
                         if(it.status == "1"){
                             tv_value.text = it.nilai
+                            tv_kat.text = "Hasil : ${it.kat}"
                         }
                     }
                 }

@@ -15,12 +15,12 @@
         android:layout_height="80dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="40dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center">
 
         <ImageView
             android:layout_width="70dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="50dp"
 
             android:scaleType="fitCenter"
             android:src="@mipmap/ic_logo" />
@@ -115,7 +115,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="110dp"
         android:orientation="vertical"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal">
@@ -143,7 +143,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center">
 

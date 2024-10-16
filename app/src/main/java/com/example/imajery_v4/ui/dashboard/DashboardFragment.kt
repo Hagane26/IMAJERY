@@ -1,13 +1,17 @@
 package com.example.imajery_v4.ui.dashboard
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.imajery_v4.R
 import com.example.imajery_v4.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
@@ -24,17 +28,26 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+        val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        val sharedRef = requireActivity().getSharedPreferences("Data-IMAJERY", Context.MODE_PRIVATE)
+        val refUserID = sharedRef.getInt("userID",0)
+        val refUserName = sharedRef.getString("username","def usenname")
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        val tvd: TextView = view.findViewById(R.id.text_dashboard)
+        val btn_logout : Button = view.findViewById(R.id.btn_dashboard_logout)
+        tvd.text = "Selamat Datang $refUserName di Aplikasi IMAGERY"
+
+        btn_logout.setOnClickListener{
+            val srEdit = sharedRef.edit()
+            srEdit.putInt("login_status",0)
+            srEdit.putInt("splash_status",0)
+            srEdit.putInt("userID",0)
+            srEdit.apply()
+            requireActivity().finish()
+            requireActivity().startActivity(requireActivity().intent)
         }
-        return root
+        return view
     }
 
     override fun onDestroyView() {
