@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dashboard.DashboardFragment">
-
+    tools:context=".ui.about.imagery">
 
     <LinearLayout
         android:id="@+id/header_dashboard"
@@ -36,38 +36,30 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/text_dashboard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:id="@+id/tv_about_label"
+        android:layout_width="308dp"
+        android:layout_height="108dp"
+        android:text="TextView"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_dashboard"
-        app:layout_constraintVertical_bias="0.084"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <Button
-        android:id="@+id/btn_dashboard_about"
-        android:layout_width="203dp"
-        android:layout_height="69dp"
-        android:text="Apa itu IMAGERY?"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_dashboard"
-        app:layout_constraintVertical_bias="0.238" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.357" />
 
-    <Button
-        android:id="@+id/btn_dashboard_logout"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="Logout"
+    <ImageView
+        android:id="@+id/iv_about_man"
+        android:layout_width="308dp"
+        android:layout_height="308dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_dashboard"
-        app:layout_constraintVertical_bias="0.794" />
+        app:layout_constraintTop_toBottomOf="@id/tv_about_label"
+        app:layout_constraintVertical_bias="0.537"
+        app:srcCompat="@mipmap/ic_man_thinking" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

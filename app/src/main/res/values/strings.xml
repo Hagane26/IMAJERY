@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IMAJERY-V4</string>
+    <string name="app_name">IMAGERY-V4</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -24,7 +24,7 @@
     <string name="default_materi_judul">Judul Materi</string>
     <string name="default_materi_deskripsi">Deskripsi Materi</string>
     <string name="default_username">Username</string>
-    <string name="lakukan_pretest">Lakukan Pretest</string>
+    <string name="lakukan_pretest">Lakukan Test</string>
     <string name="btn_submit_text">Kirim Jawaban</string>
     <string name="default_register">Register</string>
 </resources>
