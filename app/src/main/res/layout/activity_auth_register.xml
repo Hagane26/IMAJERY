@@ -7,158 +7,211 @@
     android:layout_height="match_parent"
     tools:context=".ui.auth.auth_register"
     android:orientation="vertical"
-    android:layout_margin="40dp"
     android:gravity="center_horizontal">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="40dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="@color/c2"
+        android:padding="10dp">
 
-        <ImageView
+        <androidx.cardview.widget.CardView
             android:layout_width="70dp"
-            android:layout_height="match_parent"
+            android:layout_height="70dp"
+            app:cardCornerRadius="20dp"
+            android:layout_margin="5dp">
 
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_logo" />
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_logo" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="REGISTER IMAGERY"
-            android:textSize="30dp"
+            android:text="@string/register_header_default"
+            android:textSize="30sp"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:layout_marginStart="20dp"
             android:gravity="center_vertical"/>
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/et_regis_username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="20"
-        android:inputType="text"
-        android:hint="Masukan Username" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <EditText
-            android:id="@+id/et_regis_nd"
-            android:layout_width="160dp"
-            android:layout_height="match_parent"
-            android:ems="20"
-            android:inputType="text"
-            android:hint="Nama Depan"
-            android:layout_marginEnd="5dp"/>
-
-        <EditText
-            android:id="@+id/et_regis_nb"
-            android:layout_width="160dp"
-            android:layout_height="match_parent"
-            android:ems="20"
-            android:inputType="text"
-            android:hint="Nama Belakang"
-            android:layout_marginStart="5dp"/>
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:text="Tanggal Lahir : "
-        android:textSize="15sp" />
-
-    <DatePicker
-        android:id="@+id/dp_regis_tgl"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:datePickerMode="spinner"
-        android:calendarViewShown="false"/>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:text="Jenis Kelamin"
-        android:textSize="15sp"/>
-
-    <RadioGroup
-        android:id="@+id/rg_regis_gender"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
-
-        <RadioButton
-            android:id="@+id/rb_regis_1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Laki-Laki"
-            android:layout_marginEnd="20dp"/>
-
-        <RadioButton
-            android:id="@+id/rb_regis_2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Perempuan"/>
-
-    </RadioGroup>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal">
+        android:layout_margin="20dp">
 
-        <EditText
-            android:id="@+id/et_regis_pass"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginBottom="10dp"
-            android:ems="20"
-            android:inputType="textPassword"
-            android:hint="Masukan Password"
-            android:layout_marginStart="5dp"/>
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/et_regis_cpass"
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_user_default_foreground"/>
+
+            <EditText
+                android:id="@+id/et_regis_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="20"
+                android:inputType="text"
+                android:hint="@string/hint_username" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:ems="20"
-            android:inputType="textPassword"
-            android:hint="Konfirmasi Password"
-            android:layout_marginStart="5dp"/>
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/et_regis_nd"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:ems="20"
+                android:inputType="text"
+                android:hint="Nama Depan"
+                android:layout_marginEnd="5dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:gravity="center">
+            <EditText
+                android:id="@+id/et_regis_nb"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:ems="20"
+                android:inputType="text"
+                android:hint="Nama Belakang"
+                android:layout_marginStart="5dp"/>
 
-        <Button
-            android:id="@+id/btn_regis_submit"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:text="Daftar Sekarang"
-            android:layout_marginEnd="20dp"/>
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_regis_login"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:text="Kembali Login"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/tanggal_lahir_defult"
+            android:textSize="15sp"
+            android:layout_marginStart="10dp"/>
+
+        <DatePicker
+            android:id="@+id/dp_regis_tgl"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="Jenis Kelamin"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"/>
+
+        <RadioGroup
+            android:id="@+id/rg_regis_gender"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_regis_1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Laki-Laki"
+                android:layout_marginEnd="20dp"/>
+
+            <RadioButton
+                android:id="@+id/rb_regis_2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Perempuan"/>
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/ic_lock1_default_foreground"/>
+                <EditText
+                    android:id="@+id/et_regis_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:ems="20"
+                    android:inputType="textPassword"
+                    android:hint="Masukan Password"
+                    android:layout_marginStart="5dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/ic_lock1_default_foreground"/>
+
+            <EditText
+                android:id="@+id/et_regis_cpass"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="20"
+                android:inputType="textPassword"
+                android:hint="Konfirmasi Password"
+                android:layout_marginStart="5dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_regis_submit"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:text="Daftar Sekarang"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/c1"
+                android:textAlignment="textEnd"/>
+
+            <Button
+                android:id="@+id/btn_regis_login"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:text="Kembali Login"
+                android:backgroundTint="@color/c1"
+                android:textAlignment="textStart"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

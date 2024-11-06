@@ -7,18 +7,28 @@
     android:layout_height="match_parent"
     tools:context=".ui.materi.MediaAudio.AudioPlay">
 
-    <TextView
-        android:id="@+id/tv_audio_judul"
+    <LinearLayout
+        android:id="@+id/audio_header"
         android:layout_width="match_parent"
-        android:layout_height="108dp"
-        android:text="Judul Audio"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.118"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp"
+        android:gravity="center"
+        android:background="@color/c1_180">
+
+        <TextView
+            android:id="@+id/tv_audio_judul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/judul_audio_default"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <ImageButton
         android:id="@+id/ib_audio"
@@ -26,13 +36,13 @@
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginTop="100dp"
-        android:background="@mipmap/ic_audio_play"
+        android:background="@mipmap/ic_logo_round"
         android:scaleType="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_audio_judul"
+        app:layout_constraintTop_toBottomOf="@id/audio_header"
         app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
@@ -47,7 +57,7 @@
             android:id="@+id/tv_audio_curent"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:text="00:00"
+            android:text="@string/default_time"
             android:gravity="center"
             android:layout_marginStart="60dp"/>
 
@@ -62,7 +72,7 @@
             android:id="@+id/tv_audio_duration"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:text="00:00"
+            android:text="@string/default_time"
             android:gravity="center"
             android:layout_marginEnd="60dp"/>
 

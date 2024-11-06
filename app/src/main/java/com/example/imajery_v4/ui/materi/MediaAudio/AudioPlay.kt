@@ -59,13 +59,28 @@ class AudioPlay : AppCompatActivity() {
             mins = mediaplayer.duration / 60000
             secs = (mediaplayer.duration % 60000) / 1000
             sb_audio.max = mediaplayer.duration
+
             tv_audio_duration.text = "${mins.toString() + ":" + secs.toString()}"
 
             mediaplayer.setOnBufferingUpdateListener { mp, percent ->
                 val cmin = mp.currentPosition / 60000
                 val csec = (mp.currentPosition % 60000) / 1000
+                var cmin2 = "0"
+                var csec2 = "0"
+
                 sb_audio.progress = mp.currentPosition
-                tv_audio_current.text = "${cmin.toString()} : ${csec.toString()}"
+                if(cmin < 10){
+                    cmin2 = "0" + cmin.toString()
+                }else{
+                    cmin2 = cmin.toString()
+                }
+
+                if(csec < 10){
+                    csec2 = "0" + csec.toString()
+                }else{
+                    csec2 = csec.toString()
+                }
+                tv_audio_current.text = "${cmin2} : ${csec2}"
             }
 
         }catch (e : Exception){

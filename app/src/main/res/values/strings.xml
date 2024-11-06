@@ -27,4 +27,12 @@
     <string name="lakukan_pretest">Lakukan Test</string>
     <string name="btn_submit_text">Kirim Jawaban</string>
     <string name="default_register">Register</string>
+    <string name="kata_login">LOGIN IMAGERY</string>
+    <string name="judul_audio_default">Judul Audio</string>
+    <string name="default_time">00:00</string>
+    <string name="register_header_default">REGISTER IMAGERY</string>
+    <string name="hint_username">Masukan Username</string>
+    <string name="tanggal_lahir_defult">Tanggal Lahir :</string>
+    <string name="default_skor">0</string>
+    <string name="default_kategori">Sangat Rendah</string>
 </resources>

@@ -11,17 +11,18 @@
 
     <Button
         android:id="@+id/btn_kuisoner_hasil_kembali"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:text="Kembali"
+        android:layout_width="96dp"
+        android:layout_height="67dp"
         android:layout_marginStart="10dp"
-        />
+        android:drawableEnd="@mipmap/ic_back_default_foreground"
+        android:drawableTint="#FFFFFF"
+        android:backgroundTint="@color/danger2"/>
 
     <TextView
         android:id="@+id/tv_kuisoner_hasil_value"
         android:layout_width="match_parent"
         android:layout_height="80sp"
-        android:text="0"
+        android:text="@string/default_skor"
         android:textSize="75sp"
         android:textStyle="bold"
         android:textAlignment="center"
@@ -31,7 +32,7 @@
         android:id="@+id/tv_kuisoner_hasil_kat"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:text="Sangat Rendah"
+        android:text="@string/default_kategori"
         android:textSize="20sp"
         android:textAlignment="center"
         android:layout_marginTop="10dp"

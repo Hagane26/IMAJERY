@@ -13,4 +13,16 @@
     <color name="u_sea">#227B94</color>
     <color name="u_yellow">#FFDC7F</color>
 
+    <!-- Color primary and second -->
+    <color name="c1">#37AFE1</color>
+    <color name="c2">#4CC9FE</color>
+    <color name="c3">#F5F4B3</color>
+    <color name="c4">#FFFECB</color>
+    <color name="danger1">#740938</color>
+    <color name="danger2">#AF1740</color>
+    <color name="danger3">#CC2B52</color>
+    <color name="danger4">#DE7C7D</color>
+
+    <color name="c1_180">#B437AFE1</color>
+
 </resources>

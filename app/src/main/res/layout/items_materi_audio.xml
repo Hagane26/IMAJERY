@@ -4,9 +4,9 @@
     android:id="@+id/card_item_audio"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
+    android:layout_marginTop="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="8dp">
 
@@ -14,28 +14,26 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal"
-        android:background="@color/u_teal"
+        android:background="@color/c1"
         android:layout_gravity="center">
 
         <ImageView
             android:id="@+id/iv_materi_audio_cover"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginEnd="10dp"
             android:layout_gravity="center"
-            android:src="@mipmap/ic_audio_book"/>
+            android:src="@mipmap/ic_audio_default_foreground" />
 
         <TextView
             android:id="@+id/tv_item_audio_judul"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Judul Audio"
+            android:text="@string/judul_audio_default"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textAlignment="textStart"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="5dp"/>
+            android:layout_margin="4dp"/>
 
     </LinearLayout>
 
