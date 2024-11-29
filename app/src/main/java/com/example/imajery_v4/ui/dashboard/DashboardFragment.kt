@@ -6,11 +6,13 @@ import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.support.v4.media.MediaBrowserCompat.MediaItem
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
 import androidx.fragment.app.Fragment
@@ -24,12 +26,12 @@ class DashboardFragment : Fragment() {
     private var _binding: FragmentDashboardBinding? = null
     private var mediaPlayer: MediaPlayer? = null
     private var currentAudioIndex = 0
+    private var server = ""
     private val audioList = listOf(
-        "https://palevioletred-dragonfly-972749.hostingersite.com/public/Audio/intro/1/1.mp3",
-        "https://palevioletred-dragonfly-972749.hostingersite.com/public/Audio/intro/1/2.mp3",
-        "https://palevioletred-dragonfly-972749.hostingersite.com/public/Audio/intro/1/3.mp3"
+        "{$server}/public/Audio/intro/1/1.mp3",
+        "{$server}/public/Audio/intro/1/2.mp3",
+        "{$server}/public/Audio/intro/1/3.mp3"
     )
-
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -46,6 +48,8 @@ class DashboardFragment : Fragment() {
         val sharedRef = requireActivity().getSharedPreferences("Data-IMAJERY", MODE_PRIVATE)
         val refUserID = sharedRef.getInt("userID",0)
         val refUserName = sharedRef.getString("username","def usenname")
+        val refSplash = sharedRef.getInt("splash_status",0)
+        val refLogin = sharedRef.getInt("login_status",0)
 
         val tvd: TextView = view.findViewById(R.id.text_dashboard)
         val btn_logout : Button = view.findViewById(R.id.btn_dashboard_logout)
@@ -61,6 +65,7 @@ class DashboardFragment : Fragment() {
             srEdit.apply()
             requireActivity().finish()
             requireActivity().startActivity(requireActivity().intent)
+            mediaPlayer?.release()
         }
 
         btn_about.setOnClickListener{
@@ -126,6 +131,8 @@ class DashboardFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        Toast.makeText(requireContext(), "onDestroyView", Toast.LENGTH_SHORT).show()
+        mediaPlayer?.stop()
         mediaPlayer?.release()
         _binding = null
     }

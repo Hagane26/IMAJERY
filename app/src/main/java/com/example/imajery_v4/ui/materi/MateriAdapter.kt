@@ -45,7 +45,13 @@ class MateriAdapter(
             intent.putExtra("desc", item.deskripsi)
 
             //Toast.makeText(holder.itemView.context,"id => ${item.id}",Toast.LENGTH_SHORT).show()
-            holder.itemView.context.startActivity(intent)
+
+            if (item.pretest == "1"){
+                holder.itemView.context.startActivity(intent)
+            }else{
+                holder.itemView.context.startActivity(intent)
+            }
         }
     }
+
 }

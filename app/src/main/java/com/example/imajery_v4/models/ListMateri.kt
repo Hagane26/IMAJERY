@@ -4,4 +4,5 @@ data class ListMateri(
     val id          : Int,
     val judul       : String,
     val deskripsi   : String,
+    val pretest     : String,
 )

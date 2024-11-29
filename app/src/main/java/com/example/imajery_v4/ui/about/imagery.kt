@@ -13,12 +13,13 @@ class imagery : AppCompatActivity() {
     lateinit var tv_title : TextView
     private var mediaPlayer: MediaPlayer? = null
     private var currentAudioIndex = 0
+    private var server = ""
     private val audioList = listOf(
-        "https://palevioletred-dragonfly-972749.hostingersite.com/public/Audio/intro/2/1.mp3",
-        "https://palevioletred-dragonfly-972749.hostingersite.com/public/Audio/intro/2/2.mp3",
-        "https://palevioletred-dragonfly-972749.hostingersite.com/public/Audio/intro/2/3.mp3",
-        "https://palevioletred-dragonfly-972749.hostingersite.com/public/Audio/intro/2/4.mp3",
-        "https://palevioletred-dragonfly-972749.hostingersite.com/public/Audio/intro/2/5.mp3"
+        "{$server}/public/Audio/intro/2/1.mp3",
+        "{$server}/public/Audio/intro/2/2.mp3",
+        "{$server}/public/Audio/intro/2/3.mp3",
+        "{$server}/public/Audio/intro/2/4.mp3",
+        "{$server}/public/Audio/intro/2/5.mp3"
     )
     private val audioLabels = listOf(
         "Pengenalan IMAGERY",
@@ -91,5 +92,11 @@ class imagery : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         mediaPlayer?.pause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
     }
 }
