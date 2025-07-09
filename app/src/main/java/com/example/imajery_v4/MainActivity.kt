@@ -1,6 +1,7 @@
 package com.example.imajery_v4
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -15,7 +16,7 @@ import java.time.ZonedDateTime
 import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
-
+    private var mediaPlayer: MediaPlayer? = null
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +41,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         val navView: BottomNavigationView = binding.navView
-
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

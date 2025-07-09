@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imajery_v4.R
@@ -39,12 +40,18 @@ class MateriAdapter(
 
         holder.card.setOnClickListener {
             val intent = Intent(holder.itemView.context, Materi_Detail::class.java)
-                .apply {
-                    putExtra("m_id",item.id)
-                    putExtra("judul", item.judul)
-                    putExtra("desc", item.deskripsi)
-                }
-            holder.itemView.context.startActivity(intent)
+            intent.putExtra("mid",item.id)
+            intent.putExtra("judul", item.judul)
+            intent.putExtra("desc", item.deskripsi)
+
+            //Toast.makeText(holder.itemView.context,"id => ${item.id}",Toast.LENGTH_SHORT).show()
+
+            if (item.pretest == "1"){
+                holder.itemView.context.startActivity(intent)
+            }else{
+                holder.itemView.context.startActivity(intent)
+            }
         }
     }
+
 }

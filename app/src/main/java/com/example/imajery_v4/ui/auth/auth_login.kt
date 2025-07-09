@@ -1,6 +1,7 @@
 package com.example.imajery_v4.ui.auth
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -21,6 +22,7 @@ import retrofit2.Response
 import java.time.ZonedDateTime
 
 class auth_login : AppCompatActivity() {
+    private var mediaPlayer: MediaPlayer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -31,7 +33,7 @@ class auth_login : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+        mediaPlayer?.stop()
         val apis = retrofitClient.instance.create(APIService::class.java)
 
         val sharedRef = getSharedPreferences("Data-IMAJERY", MODE_PRIVATE)
@@ -42,6 +44,7 @@ class auth_login : AppCompatActivity() {
         val tb_email : EditText = findViewById(R.id.et_login_email)
         val tb_password : EditText = findViewById(R.id.et_login_password)
         val btn_login : Button = findViewById(R.id.btn_login_submit)
+        val btn_register : Button = findViewById(R.id.btn_login_register)
 
         btn_login.setOnClickListener{
             val loginReq = LoginReq(
@@ -84,5 +87,8 @@ class auth_login : AppCompatActivity() {
             })
         }
 
+        btn_register.setOnClickListener{
+            startActivity(Intent(this@auth_login,auth_register::class.java))
+        }
     }
 }

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
-        android:background="@color/u_teal"
+        android:background="@color/c1"
         android:layout_gravity="center">
 
         <ImageView
@@ -45,7 +45,7 @@
             <TextView
                 android:id="@+id/tv_item_desc"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/default_materi_deskripsi"
                 android:textSize="14sp"
                 android:textColor="@color/white"

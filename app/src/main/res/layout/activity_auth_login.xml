@@ -5,48 +5,82 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.auth.auth_login">
+    tools:context=".ui.auth.auth_login"
+    android:layout_gravity="center">
 
-    <TextView
-        android:id="@+id/tv_login_label"
-        android:layout_width="318dp"
-        android:layout_height="49dp"
-        android:text="@string/imajery_login_label"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/c2"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/c2"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526" />
+        app:layout_constraintVertical_bias="0.113">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            app:cardCornerRadius="20dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_logo" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:gravity="center_vertical"
+            android:text="@string/kata_login"
+            android:textColor="@color/c4"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:layout_marginBottom="320dp"
         android:orientation="vertical"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_login_submit"
-        tools:layout_editor_absoluteX="7dp">
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_login_email"
+            <androidx.cardview.widget.CardView
                 android:layout_width="45dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="@string/default_username"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"/>
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_user_default_foreground" />
+            </androidx.cardview.widget.CardView>
 
             <EditText
                 android:id="@+id/et_login_email"
@@ -55,7 +89,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/default_username"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -63,16 +98,16 @@
             android:layout_height="50dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tx_login_password"
+            <androidx.cardview.widget.CardView
                 android:layout_width="45dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:text="@string/Password"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:gravity="center"/>
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_lock1_default_foreground" />
+            </androidx.cardview.widget.CardView>
 
             <EditText
                 android:id="@+id/et_login_password"
@@ -81,31 +116,38 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/Password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_login_submit"
-        android:layout_width="170dp"
-        android:layout_height="59dp"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/c2"
+        android:drawableEnd="@mipmap/ic_enter_default_foreground"
+        android:drawableTint="@color/white"
         android:text="@string/btn_login_text"
+        android:textAlignment="viewStart"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.572" />
+        app:layout_constraintVertical_bias="0.669" />
 
     <Button
         android:id="@+id/btn_login_register"
-        android:layout_width="170dp"
-        android:layout_height="59dp"
+        android:layout_width="133dp"
+        android:layout_height="58dp"
+        android:backgroundTint="@color/c2"
         android:text="@string/default_register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login_submit"
-        app:layout_constraintVertical_bias="0.171" />
+        app:layout_constraintVertical_bias="0.274" />
 </androidx.constraintlayout.widget.ConstraintLayout>

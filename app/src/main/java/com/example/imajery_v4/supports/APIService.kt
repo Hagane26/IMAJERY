@@ -1,5 +1,7 @@
 package com.example.imajery_v4.supports
 
+import com.example.imajery_v4.models.AudioReq
+import com.example.imajery_v4.models.AudioRes
 import com.example.imajery_v4.models.Jawaban
 import com.example.imajery_v4.models.JawabanReq
 import com.example.imajery_v4.models.JawabanRes
@@ -13,6 +15,8 @@ import com.example.imajery_v4.models.LoginRes
 import com.example.imajery_v4.models.KuisonerHasilReq
 import com.example.imajery_v4.models.KuisonerHasilRes
 import com.example.imajery_v4.models.KuisonerPenilaian
+import com.example.imajery_v4.models.RegisterReq
+import com.example.imajery_v4.models.RegisterRes
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -22,6 +26,9 @@ import retrofit2.http.Path
 interface APIService {
     @POST("/auth_login")
     fun login(@Body loginReq: LoginReq): Call<LoginRes>
+
+    @POST("/auth_regis")
+    fun register(@Body registerReq: RegisterReq): Call<RegisterRes>
 
     @GET("/materi")
     fun getMateri(): Call<List<ListMateri>>
@@ -41,4 +48,6 @@ interface APIService {
     @POST("/penilaian_hasil")
     fun kuisonerPenilaian(@Body id: KuisonerHasilReq): Call<KuisonerPenilaian>
 
+    @POST("/audio")
+    fun getAudio(@Body id: AudioReq): Call<List<AudioRes>>
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IMAJERY-V4</string>
+    <string name="app_name">IMAGERY-V4</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -24,7 +24,15 @@
     <string name="default_materi_judul">Judul Materi</string>
     <string name="default_materi_deskripsi">Deskripsi Materi</string>
     <string name="default_username">Username</string>
-    <string name="lakukan_pretest">Lakukan Pretest</string>
+    <string name="lakukan_pretest">Lakukan Test</string>
     <string name="btn_submit_text">Kirim Jawaban</string>
     <string name="default_register">Register</string>
+    <string name="kata_login">LOGIN IMAGERY</string>
+    <string name="judul_audio_default">Judul Audio</string>
+    <string name="default_time">00:00</string>
+    <string name="register_header_default">REGISTER IMAGERY</string>
+    <string name="hint_username">Masukan Username</string>
+    <string name="tanggal_lahir_defult">Tanggal Lahir :</string>
+    <string name="default_skor">0</string>
+    <string name="default_kategori">Sangat Rendah</string>
 </resources>
