@@ -74,7 +74,7 @@ class auth_login : AppCompatActivity() {
 
                                 Toast.makeText(this@auth_login,"Login Berhasil", Toast.LENGTH_LONG).show()
                             }else{
-                                Toast.makeText(this@auth_login,"Login Gagal \n ${ it.status + ":" + it.message} \n ${tb_email.text.toString()}", Toast.LENGTH_LONG).show()
+                                Toast.makeText(this@auth_login,"Login Gagal \n ${ it.message} \n ${tb_email.text.toString()}", Toast.LENGTH_LONG).show()
                             }
                         }
                     }

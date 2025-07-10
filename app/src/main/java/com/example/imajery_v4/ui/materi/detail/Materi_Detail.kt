@@ -30,6 +30,8 @@ class Materi_Detail : AppCompatActivity() {
     private lateinit var rv_audio : RecyclerView
     private lateinit var adapter : AudioAdapter
 
+    private var apis = retrofitClient.instance.create(APIService::class.java)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -42,10 +44,14 @@ class Materi_Detail : AppCompatActivity() {
         val sharedRef = getSharedPreferences("Data-IMAJERY", MODE_PRIVATE)
         val refUserID = sharedRef.getInt("userID",0)
 
-        val apis = retrofitClient.instance.create(APIService::class.java)
         val mid = intent.getIntExtra("mid",0)
         val judul = intent.getStringExtra("judul")
         val desc = intent.getStringExtra("desc")
+        val pretest = intent.getStringExtra("pretest")
+
+        if(pretest == "1"){
+            cek(refUserID,mid,"PreTest")
+        }
 
         //Toast.makeText(this,"id => $mid",Toast.LENGTH_SHORT).show()
 
@@ -79,39 +85,42 @@ class Materi_Detail : AppCompatActivity() {
         })
 
         btn_pretest.setOnClickListener {
-
-            val data = KuisonerReq(
-                id_user = refUserID,
-                id_materi = mid
-            )
-            apis.buatKuisoner(data).enqueue(object : retrofit2.Callback<KuisonerRes> {
-                override fun onResponse(call: Call<KuisonerRes>, response: Response<KuisonerRes>) {
-                    if(response.isSuccessful){
-                        response.body()?.let {
-                            if(it.status == "1"){
-                                gas(mid,it.id_kuisoner, refUserID, this@Materi_Detail)
-                            }else{
-                                Toast.makeText(this@Materi_Detail,"Anda Tidak Bisa Menuju ke Kuisoner!", Toast.LENGTH_LONG).show()
-                            }
-                        }
-                    }else{
-                        Toast.makeText(this@Materi_Detail,"No Response \n ${response.message()}", Toast.LENGTH_LONG).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<KuisonerRes>, t: Throwable) {
-                    Toast.makeText(this@Materi_Detail,"Error :\n ${t.message.toString()}", Toast.LENGTH_LONG).show()
-                }
-
-            })
-
+            cek(refUserID,mid,"PostTest")
         }
     }
 
-    private fun gas(mID : Int, kID :Int, uID : Int,ctx : Context){
+    private fun cek(refUserID:Int,mid:Int,ktipe:String){
+        val data = KuisonerReq(
+            id_user = refUserID,
+            id_materi = mid
+        )
+        apis.buatKuisoner(data).enqueue(object : retrofit2.Callback<KuisonerRes> {
+            override fun onResponse(call: Call<KuisonerRes>, response: Response<KuisonerRes>) {
+                if(response.isSuccessful){
+                    response.body()?.let {
+                        if(it.status == "1"){
+                            gas(mid,it.id_kuisoner, refUserID, ktipe, this@Materi_Detail)
+                        }else{
+                            Toast.makeText(this@Materi_Detail,"Anda Tidak Bisa Menuju ke Kuisoner!", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                }else{
+                    Toast.makeText(this@Materi_Detail,"No Response \n ${response.message()}", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: Call<KuisonerRes>, t: Throwable) {
+                Toast.makeText(this@Materi_Detail,"Error :\n ${t.message.toString()}", Toast.LENGTH_LONG).show()
+            }
+
+        })
+    }
+
+    private fun gas(mID : Int, kID :Int, uID : Int, ktipe:String,ctx : Context){
         val intent = Intent(ctx, Kuisoner::class.java).apply {
             putExtra("mID", mID)
             putExtra("kID", kID)
+            putExtra("ktipe", ktipe)
             putExtra("uID", uID)
         }
         startActivity(intent)

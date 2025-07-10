@@ -2,6 +2,10 @@ package com.example.imajery_v4.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
@@ -30,9 +34,15 @@ class auth_register : AppCompatActivity() {
     lateinit var radio : RadioButton
     lateinit var password : EditText
     lateinit var cPassword : EditText
+    lateinit var bidang : AutoCompleteTextView
 
     lateinit var btn_submit : Button
     lateinit var btn_login : Button
+
+    var item = arrayOf(
+        "Sepak Bola",
+        "Badminton"
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +63,10 @@ class auth_register : AppCompatActivity() {
         gender = findViewById(R.id.rg_regis_gender)
         password = findViewById(R.id.et_regis_pass)
         cPassword = findViewById(R.id.et_regis_cpass)
+        bidang = findViewById(R.id.ACT_Bidang)
+
+        val adapter = ArrayAdapter(applicationContext,android.R.layout.simple_list_item_1,item)
+        bidang.setAdapter(adapter)
 
         btn_submit = findViewById(R.id.btn_regis_submit)
         btn_login = findViewById(R.id.btn_regis_login)
@@ -70,11 +84,12 @@ class auth_register : AppCompatActivity() {
                 namaDepan.text.toString() == "" ||
                 namaBelakang.text.toString() == "" ||
                 tgl.toString() == "" ||
+                bidang.text.toString() == "" ||
                 radio.text.toString() == "" ||
                 password.text.toString() == "" ||
                 cPassword.text.toString() == ""
             ) {
-                Toast.makeText(this@auth_register, "Mohon Lengkapi Data!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@auth_register, "Mohon Lengkapi Data! ", Toast.LENGTH_LONG).show()
             } else {
                 if(cPassword.text.toString() == password.text.toString()){
                     var sgender = "L"
@@ -82,12 +97,14 @@ class auth_register : AppCompatActivity() {
                         "Laki-Laki" -> sgender = "L"
                         "Perempuan" -> sgender = "P"
                     }
+                    Toast.makeText(this@auth_register,"${bidang.text.toString()}",Toast.LENGTH_LONG).show()
                     val data = RegisterReq(
                         username = username.text.toString(),
                         namaDepan = namaDepan.text.toString(),
                         namaBelakang = namaBelakang.text.toString(),
                         tanggalLahir = tgl,
                         gender = sgender,
+                        bidang = bidang.text.toString(),
                         password = password.text.toString(),
                         img = ""
                     )

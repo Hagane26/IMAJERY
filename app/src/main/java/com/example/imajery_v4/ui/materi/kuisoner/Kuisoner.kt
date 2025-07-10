@@ -43,8 +43,10 @@ class Kuisoner : AppCompatActivity() {
         val mID = intent.getIntExtra("mID",0)
         val kID = intent.getIntExtra("kID",0)
         val uID = intent.getIntExtra("uID",0)
+        val ktipe = intent.getStringExtra("ktipe")
         val postid = ListPertanyaanPost(mID)
 
+        Toast.makeText(this, ":" + ktipe, Toast.LENGTH_SHORT).show()
         val btn_kirim : Button = findViewById(R.id.btn_kuisoner_kirim)
 
         rv = findViewById(R.id.rv_pertanyaan)
@@ -57,7 +59,7 @@ class Kuisoner : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     response.body()?.let { pertanyaanList ->
-                        adapter = KuisonerAdapter(pertanyaanList,kID){ jawaban ->
+                        adapter = KuisonerAdapter(pertanyaanList,kID,ktipe.toString()){ jawaban ->
                             jawabanList = jawaban   // --> identifikasi jawaban
                         }
                         rv.adapter = adapter
@@ -78,6 +80,7 @@ class Kuisoner : AppCompatActivity() {
 
                 val data = JawabanReq(
                     mid = mID,
+                    tipe = ktipe.toString(),
                     DataJawaban = jawabanList
                 )
 
@@ -100,7 +103,7 @@ class Kuisoner : AppCompatActivity() {
                                 }
                             }
                         }else{
-                            Toast.makeText(this@Kuisoner,"Gagal Mengirim Jawaban 2", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@Kuisoner,"Gagal Mengirim Jawaban 2\n" + response.body()?.message, Toast.LENGTH_LONG).show()
                         }
                     }
 

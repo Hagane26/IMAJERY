@@ -18,6 +18,7 @@ import com.example.imajery_v4.models.ListPertanyaanPost
 class KuisonerAdapter(
     private val data : List<ListPertanyaan>,
     private val kid : Int,
+    private val ktipe : String,
     private val onAnswer : (List<Jawaban>) -> Unit // --> Callback saat jawaban dipilih
 ) : RecyclerView.Adapter<KuisonerAdapter.ViewHolder>() {
 
@@ -43,7 +44,7 @@ class KuisonerAdapter(
         holder.rg_1.removeAllViews()
 
         if(jawab.size < data.size){
-            jawab.addAll(List(data.size - jawab.size){Jawaban(it,0,0)})
+            jawab.addAll(List(data.size - jawab.size){Jawaban(it,0,ktipe,0)})
         }
 
         val opsi = DataOpsiPilihan.getOpsi(item.id)
@@ -65,7 +66,7 @@ class KuisonerAdapter(
                     }
                 }
 
-                jawab[position] = Jawaban(kid,item.id,(index+1))
+                jawab[position] = Jawaban(kid,item.id,ktipe,(index+1))
                 //Toast.makeText(holder.itemView.context, "jawaban : ${jawab[position].value}", Toast.LENGTH_SHORT).show()
                 onAnswer(jawab) // --> Callback saat jawaban dipilih
             }

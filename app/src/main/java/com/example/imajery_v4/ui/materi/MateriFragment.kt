@@ -1,5 +1,6 @@
 package com.example.imajery_v4.ui.materi
 
+import android.content.Context.MODE_PRIVATE
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imajery_v4.R
@@ -41,9 +41,14 @@ class MateriFragment : Fragment() {
 
         rv = view.findViewById(R.id.rv_item_materi)
         rv.layoutManager = LinearLayoutManager(requireContext())
+        rv.setHasFixedSize(true)
+
+        val sp = requireContext().getSharedPreferences("Data-IMAJERY", MODE_PRIVATE)
+        val userID = sp.getInt("userID",0)
+        //Toast.makeText(requireContext(), "userID : $userID", Toast.LENGTH_SHORT).show()
 
         val apis = retrofitClient.instance.create(APIService::class.java)
-        apis.getMateri().enqueue(object : Callback<List<ListMateri>> {
+        apis.getMateriById(userID).enqueue(object : Callback<List<ListMateri>> {
             override fun onResponse(
                 call: Call<List<ListMateri>>,
                 response: Response<List<ListMateri>>

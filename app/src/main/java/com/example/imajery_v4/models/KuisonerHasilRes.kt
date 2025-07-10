@@ -6,5 +6,4 @@ data class KuisonerHasilRes (
     val tipe : String,
     val jawaban : String,
     val nilai : String,
-    
 )

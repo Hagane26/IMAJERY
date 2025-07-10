@@ -6,6 +6,7 @@ data class RegisterReq(
     val namaBelakang: String,
     val tanggalLahir: String,
     val gender: String,
+    val bidang: String,
     val password: String,
     val img : String
 )

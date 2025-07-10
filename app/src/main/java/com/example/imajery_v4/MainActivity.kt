@@ -14,6 +14,7 @@ import com.example.imajery_v4.databinding.ActivityMainBinding
 import com.example.imajery_v4.ui.auth.auth_login
 import java.time.ZonedDateTime
 import java.util.concurrent.TimeUnit
+import androidx.appcompat.app.AppCompatDelegate
 
 class MainActivity : AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null
@@ -33,6 +34,8 @@ class MainActivity : AppCompatActivity() {
 
         val currentTime = ZonedDateTime.now().toInstant().toEpochMilli()
         val timeLogin = TimeUnit.MILLISECONDS.toDays(currentTime - refTimeLogin)
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         //Toast.makeText(this@MainActivity, "Login Time : $timeLogin", Toast.LENGTH_SHORT).show()
 

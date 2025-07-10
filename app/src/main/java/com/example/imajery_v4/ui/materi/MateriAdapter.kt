@@ -1,5 +1,6 @@
 package com.example.imajery_v4.ui.materi
 
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.imajery_v4.R
 import com.example.imajery_v4.models.ListMateri
 import com.example.imajery_v4.ui.materi.detail.Materi_Detail
+import com.example.imajery_v4.ui.materi.kuisoner.Kuisoner
 import com.google.android.material.card.MaterialCardView
 
 
@@ -40,17 +42,16 @@ class MateriAdapter(
 
         holder.card.setOnClickListener {
             val intent = Intent(holder.itemView.context, Materi_Detail::class.java)
+            val sharedRef = holder.itemView.context.getSharedPreferences("Data-IMAJERY", MODE_PRIVATE)
+            val refUserID = sharedRef.getInt("userID",0)
             intent.putExtra("mid",item.id)
             intent.putExtra("judul", item.judul)
             intent.putExtra("desc", item.deskripsi)
-
+            intent.putExtra("pretest", item.pretest)
+            holder.itemView.context.startActivity(intent)
             //Toast.makeText(holder.itemView.context,"id => ${item.id}",Toast.LENGTH_SHORT).show()
+            //Toast.makeText(holder.itemView.context, ":" + item.pretest, Toast.LENGTH_SHORT).show()
 
-            if (item.pretest == "1"){
-                holder.itemView.context.startActivity(intent)
-            }else{
-                holder.itemView.context.startActivity(intent)
-            }
         }
     }
 
