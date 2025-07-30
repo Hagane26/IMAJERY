@@ -5,79 +5,188 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/sporty_light_grey_bg"
     tools:context=".ui.materi.detail.Materi_Detail">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_detail_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="18dp"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="15dp"
-        app:cardCornerRadius="10dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:background="@color/white">
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/ic_materi_black_24dp" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp"> <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_detail_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            android:backgroundTint="@color/sporty_card_background">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
 
-                <TextView
-                    android:id="@+id/tv_detail_judul"
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_materi_icon"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/ic_judul_materi"
+                    android:tint="@color/ic_back_default_background"
+                    android:scaleType="centerInside"
+                    android:background="@color/u_navy"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                    android:padding="12dp"
+                    android:layout_marginEnd="16dp" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/default_materi_judul"
-                    android:textStyle="bold"
-                    android:textSize="20sp"/>
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_detail_desc"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/default_materi_deskripsi"
-                    android:layout_marginTop="20dp"/>
+                    <TextView
+                        android:id="@+id/tv_detail_judul"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/default_materi_judul"
+                        android:textStyle="bold"
+                        android:textColor="@color/u_navy"
+                        android:textSize="22sp"
+                        android:layout_marginBottom="4dp"/>
 
+                    <TextView
+                        android:id="@+id/tv_detail_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/default_materi_deskripsi"
+                        android:textColor="@color/sporty_text_dark"
+                        android:textSize="14sp"
+                        android:maxLines="3"
+                        android:ellipsize="end"
+                        android:layout_marginBottom="8dp"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_materi_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/status_belum_selesai"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        app:chipBackgroundColor="@color/sporty_accent_orange" app:chipCornerRadius="8dp"
+                        app:chipStartIcon="@drawable/ic_status_in_progress_24dp" app:chipIconTint="@color/white"
+                        tools:visibility="visible" />
+                </LinearLayout>
             </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_pretest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/lakukan_pretest"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/sporty_text_on_dark"
+                android:backgroundTint="@color/sporty_accent_orange"
+                app:cornerRadius="12dp"
+                android:paddingVertical="14dp"
+                app:icon="@color/u_navy"
+                app:iconTint="@color/white"
+                app:iconGravity="textStart"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_video_player"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:backgroundTint="@color/black"> <ImageView
+                android:id="@+id/iv_video_thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/video_thumbnail_placeholder"
+                android:contentDescription="@string/video_thumbnail"/>
+
+                <ImageView
+                    android:id="@+id/iv_play_button"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@android:drawable/ic_media_play"
+                    android:tint="@color/sporty_accent_orange"
+                    android:layout_gravity="center"
+                    android:contentDescription="midmap/play_video_desc"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/linear_layout_quick_actions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center_horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_share_materi"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/bagikan_materi"
+                    android:textColor="@color/u_navy"
+                    app:strokeColor="@color/u_navy"
+                    app:strokeWidth="1dp"
+                    app:cornerRadius="8dp"
+                    app:icon="?attr/actionModeShareDrawable"
+                    app:iconTint="@color/u_navy"
+                    android:paddingVertical="12dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_download_materi"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/unduh_materi"
+                    android:textColor="@color/u_navy"
+                    app:strokeColor="@color/u_navy"
+                    app:strokeWidth="1dp"
+                    app:cornerRadius="8dp"
+                    app:icon="@android:drawable/stat_sys_download"
+                    app:iconTint="@color/u_navy"
+                    android:paddingVertical="12dp"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_materi_audio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                tools:listitem="@layout/items_materi_audio" />
+
         </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/btn_pretest"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_margin="15dp"
-        android:text="@string/lakukan_pretest"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/danger3"
-        android:drawableStart="@mipmap/ic_cklist_default_foreground"
-        android:drawableTint="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/card_detail_1"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_materi_audio"
-        android:layout_width="match_parent"
-        android:layout_height="480dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_pretest"
-        app:layout_constraintVertical_bias="0.188"
-        tools:layout_editor_absoluteX="-4dp"
-        tools:listitem="@layout/items_materi_audio" />
-
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

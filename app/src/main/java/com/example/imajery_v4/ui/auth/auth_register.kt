@@ -63,9 +63,10 @@ class auth_register : AppCompatActivity() {
         gender = findViewById(R.id.rg_regis_gender)
         password = findViewById(R.id.et_regis_pass)
         cPassword = findViewById(R.id.et_regis_cpass)
-        bidang = findViewById(R.id.ACT_Bidang)
+        bidang = findViewById(R.id.actv_bidang_olahraga)
 
-        val adapter = ArrayAdapter(applicationContext,android.R.layout.simple_list_item_1,item)
+        val sportsArray = resources.getStringArray(R.array.sport_options)
+        val adapter = ArrayAdapter(applicationContext,android.R.layout.simple_list_item_1,sportsArray)
         bidang.setAdapter(adapter)
 
         btn_submit = findViewById(R.id.btn_regis_submit)

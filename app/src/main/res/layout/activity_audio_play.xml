@@ -36,7 +36,7 @@
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginTop="100dp"
-        android:background="@mipmap/ic_logo_round"
+        android:background="@mipmap/ic_logo_new_round"
         android:scaleType="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

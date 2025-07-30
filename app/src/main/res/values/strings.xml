@@ -15,7 +15,7 @@
     <string name="imajery_login_label">Silahkan Login ke IMAJERY</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="btn_login_text">Login</string>
+    <string name="btn_login_text">Masuk</string>
     <string name="login_pass_hint">Password</string>
     <string name="Password">Password</string>
     <string name="Email">Email</string>
@@ -24,15 +24,62 @@
     <string name="default_materi_judul">Judul Materi</string>
     <string name="default_materi_deskripsi">Deskripsi Materi</string>
     <string name="default_username">Username</string>
-    <string name="lakukan_pretest">Lakukan Test</string>
+    <string name="lakukan_pretest">Ambil Test</string>
     <string name="btn_submit_text">Kirim Jawaban</string>
     <string name="default_register">Register</string>
     <string name="kata_login">LOGIN IMAGERY</string>
     <string name="judul_audio_default">Judul Audio</string>
     <string name="default_time">00:00</string>
-    <string name="register_header_default">REGISTER IMAGERY</string>
+    <string name="register_header_default">DAFTAR IMAGERY</string>
     <string name="hint_username">Masukan Username</string>
     <string name="tanggal_lahir_defult">Tanggal Lahir :</string>
     <string name="default_skor">0</string>
     <string name="default_kategori">Sangat Rendah</string>
+    <string name="masukkan_nama_pengguna">Masukkan nama pengguna</string>
+    <string name="masukkan_kata_sandi">Masukkan kata sandi</string>
+    <string name="masuk">Masuk</string>
+    <string name="daftar">Daftar</string>
+    <string name="logout">Keluar</string>
+    <string name="dashboard_welcome_message">Selamat Datang,
+        Penggemar Olahraga!</string>
+    <string name="daily_activity_title">Ringkasan Aktivitas Harian</string>
+    <string name="daily_activity_description">Lacak kemajuan Anda dan tetap termotivasi!</string>
+    <string name="quick_actions_title">Tindakan Cepat</string>
+    <string name="start_activity_button">Mulai Aktivitas Baru</string>
+    <string name="view_history_button">Lihat Riwayat</string>
+    <string name="about_imagery_button">Apa itu IMAGERY?</string>
+
+    <string-array name="sport_options">
+        <item>Gulat</item>
+        <item>Angkat Besi</item>
+        <item>Silat</item>
+        <item>Atletik</item>
+        <item>Binaraga</item>
+        <item>Futsal</item>
+        <item>Sepak Bola</item>
+        <item>Basket</item>
+        <item>Bulu Tangkis</item>
+        <item>Voli</item>
+    </string-array>
+
+    <string name="hint_bidang_olahraga">Bidang Olahraga</string>
+    <string name="imagery">IMAGERY</string>
+    <string name="masuk_ke_akun_anda">Masuk ke akun anda</string>
+    <string name="nama_pengguna">Nama Pengguna</string>
+    <string name="kata_sandi">Kata Sandi</string>
+    <string name="sudah_punya_akun">Sudah Punya Akun</string>
+    <string name="daftar_sekarang">Daftar Sekarang</string>
+    <string name="konfirmasi_password">Konfirmasi Password</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="perempuan">Perempuan</string>
+    <string name="laki_laki">Laki-laki</string>
+    <string name="tanggal_lahir">Tanggal Lahir</string>
+    <string name="tanggal_lahir_label">Tanggal lahir Label</string>
+    <string name="hint_nama_depan">Nama Depan</string>
+    <string name="nama_belakang">Nama Belakang</string>
+    <string name="status_belum_selesai">Status Belum Selesai</string>
+    <string name="bagikan_materi">Bagikan Materi</string>
+    <string name="unduh_materi">Unduh Materi</string>
+    <string name="video_thumbnail">Video Thumbnail</string>
+
 </resources>

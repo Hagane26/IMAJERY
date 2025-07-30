@@ -17,6 +17,8 @@ import com.example.imajery_v4.models.LoginReq
 import com.example.imajery_v4.models.LoginRes
 import com.example.imajery_v4.supports.APIService
 import com.example.imajery_v4.supports.retrofitClient
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
 import retrofit2.Response
 import java.time.ZonedDateTime
@@ -41,8 +43,8 @@ class auth_login : AppCompatActivity() {
 
         val currentTime = ZonedDateTime.now().toInstant().toEpochMilli()
 
-        val tb_email : EditText = findViewById(R.id.et_login_email)
-        val tb_password : EditText = findViewById(R.id.et_login_password)
+        val tb_email : TextInputEditText = findViewById(R.id.et_login_username)
+        val tb_password : TextInputEditText = findViewById(R.id.et_login_password)
         val btn_login : Button = findViewById(R.id.btn_login_submit)
         val btn_register : Button = findViewById(R.id.btn_login_register)
 
